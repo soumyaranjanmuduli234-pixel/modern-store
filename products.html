@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - E-Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">E-Shop</a>
+            <div class="hamburger">☰</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>All Products</h2>
+        <br>
+        <div class="grid" id="product-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function renderProducts() {
+            const container = document.getElementById('product-container');
+            const products = JSON.parse(localStorage.getItem('ecom_products')) || [];
+
+            container.innerHTML = products.map(p => `
+                <div class="card" style="text-align: center;">
+                    <img src="${p.img}" alt="${p.name}" style="max-width: 100%; height: auto; border-radius: 4px;">
+                    <h3 style="margin: 0.5rem 0;">${p.name}</h3>
+                    <p style="font-weight: bold; color: var(--primary);">₹${p.price}</p>
+                    <button class="btn" onclick="addToCart(${p.id})" style="margin-top: 0.5rem;">Add to Cart</button>
+                </div>
+            `).join('');
+        }
+        document.addEventListener('DOMContentLoaded', renderProducts);
+    </script>
+</body>
+</html>

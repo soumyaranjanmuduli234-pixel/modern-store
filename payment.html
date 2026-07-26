@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - E-Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">E-Shop</a>
+            <div class="hamburger">☰</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="card" style="max-width: 400px; margin: 0 auto; text-align: center;">
+            <h2>Payment Gateway</h2>
+            <br>
+            <div class="form-group" style="text-align: left;">
+                <label>Select Payment Method</label>
+                <select id="pay-mode">
+                    <option>UPI / PhonePe / Google Pay</option>
+                    <option>Credit / Debit Card</option>
+                    <option>Cash on Delivery</option>
+                </select>
+            </div>
+            <button onclick="processPayment()" class="btn" style="width: 100%;">Pay Now</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function processPayment() {
+            alert('Order Placed Successfully!');
+            localStorage.removeItem('ecom_cart');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
